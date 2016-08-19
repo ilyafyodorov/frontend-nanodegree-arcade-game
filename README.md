@@ -1,7 +1,7 @@
 Arcade Game Project: Frogger
 ===============================
 
-Project 3 in Frond-End Developer Nanodegree program from Udacity.
+Part of Frond-End Developer Nanodegree program from Udacity.
 
 Running the game
 ----------------
