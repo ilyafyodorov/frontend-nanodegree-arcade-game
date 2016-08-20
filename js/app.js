@@ -16,11 +16,6 @@ Character.prototype.init=function(x,y,sprite){
 Character.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-//Reset function puts player into the initial position
-Character.prototype.reset = function() {
-    player.x = 200;
-    player.y = 390;
-};
 
 // Enemy bug object
 function Enemy (x,y,sprite) {
@@ -41,7 +36,7 @@ Enemy.prototype.update = function(dt) {
     }
     //If the player comes within 60px of an enemy, reset
     if(player.x >= this.x - 60 && player.x <= this.x + 60 && player.y >= this.y - 60 && player.y <= this.y + 60){
-        this.reset();
+        player.reset();
     }
 };
 
@@ -55,7 +50,7 @@ Player.prototype=new Character();
 Player.prototype.update = function(){
     if(this.ctlKey === 'left' && this.x > 0){
         this.x = this.x - TILE_WIDTH;
-    }else if(this.ctlKey === 'right' && this.x != 400){
+    }else if(this.ctlKey === 'right' && this.x < 400){
         this.x = this.x + TILE_WIDTH;
     }else if(this.ctlKey === 'up'){
         this.y = this.y - TILE_HEIGHT;
@@ -68,6 +63,12 @@ Player.prototype.update = function(){
         alert('Success!');
         this.reset();
     }
+};
+
+//Reset function puts player into the initial position
+Player.prototype.reset = function() {
+    this.x = 200;
+    this.y = 390;
 };
 
 //Input handler for player as requires by the game engine
